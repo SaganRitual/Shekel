@@ -14,7 +14,7 @@ extension GameScene {
         let mouseDispatch = MouseDispatch(from: event, scene: self)
         gameController.gameSettings.mousePosition = mouseDispatch.location
 
-        if mouseState == .idle {
+        if mouseState == .mouseDown {
             dragBegin(mouseDispatch)
         }
 
@@ -26,7 +26,7 @@ extension GameScene {
         case .dragHandle:
             gameController.drag(dragDispatch)
         default:
-            assert(false, "Nine out of ten dentists have said this cannot occur")
+            fatalError("Nine out of ten tech CEOs say this can't happen")
         }
     }
 
@@ -45,7 +45,10 @@ extension GameScene {
         case .dragHandle:
             break
         case .mouseDown:
-            guard let topNode = nodes(at: mouseDispatch.location).first(where: { $0 !== entitiesNode }) else {
+            // Note that we're checking the nodes for owner entity. We shouldn't have to
+            // do it, but sometimes nodes(at:) will include nodes we don't want,
+            // such as the entities node, which has zero size and technically sits at the origin
+            guard let topNode = getTopNode(at: mouseDispatch.location) else {
                 // Nothing at the click point; create an entity
                 let clickDispatch = ClickDispatch.click(nil, mouseDispatch)
                 gameController.click(clickDispatch)
@@ -53,7 +56,8 @@ extension GameScene {
             }
 
             guard let entity = topNode.getOwnerEntity() else {
-                fatalError("Clicked a node that doesn't have an owner entity?")
+                assert(false, "Got a node with no owner? See getTopNode()")
+                return
             }
 
             let clickDispatch = ClickDispatch.click(entity, mouseDispatch)
@@ -75,14 +79,14 @@ private extension GameScene {
     // things with a selection marquee: by letting go of the mouse button
 
     func dragBegin(_ mouseDispatch: MouseDispatch) {
-        guard let topNode = nodes(at: mouseDispatch.location).first else {
+        guard let topNode = getTopNode(at: mouseDispatch.location) else {
             selectionMarquee.drag(DragDispatch.begin(nil, mouseDispatch))
             mouseState = .dragBackground
             return
         }
 
         guard let entity = topNode.getOwnerEntity() else {
-            assert(false, "Every visible node should be owned by an entity")
+            assert(false, "Got a node with no owner? See getTopNode()")
             return
         }
 
@@ -91,6 +95,10 @@ private extension GameScene {
         hotDragTarget = entity
         gameController.drag(dragDispatch)
         mouseState = .dragHandle
+    }
+
+    func getTopNode(at position: CGPoint) -> SKNode? {
+        nodes(at: position).first(where: { $0.getOwnerEntity() != nil })
     }
 
     func makeRectangle(vertexA: CGPoint, vertexB: CGPoint) -> CGRect {

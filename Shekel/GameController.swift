@@ -20,11 +20,13 @@ final class GameController: ObservableObject {
     func click(_ clickDispatch: ClickDispatch) {
         if let entity = clickDispatch.entity {
             // Clicked on an entity; do selection stuff
-            if !clickDispatch.shift {
+            if clickDispatch.shift {
+                toggleSelect(entity)
+            } else {
                 deselectAll()
+                select(entity)
             }
 
-            select(entity)
             return
         }
 
@@ -64,7 +66,7 @@ final class GameController: ObservableObject {
     }
 
     func moveSelected(_ dragDispatch: DragDispatch) {
-        let delta = dragDispatch.entity!.dragAnchor! - dragDispatch.location
+        let delta = dragDispatch.location - dragDispatch.entity!.dragAnchor!
 
         getSelected().forEach { entity in
             entity.position = entity.dragAnchor! + delta
