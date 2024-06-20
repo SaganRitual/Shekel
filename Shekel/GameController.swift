@@ -65,6 +65,15 @@ final class GameController: ObservableObject {
         }
     }
 
+    func handleMarqueeSelection(_ entities: Set<GameEntity>, _ dragDispatch: DragDispatch) {
+        if dragDispatch.shift {
+            entities.forEach { toggleSelect($0) }
+        } else {
+            deselectAll()
+            entities.forEach { select($0) }
+        }
+    }
+
     func moveSelected(_ dragDispatch: DragDispatch) {
         let delta = dragDispatch.location - dragDispatch.entity!.dragAnchor!
 

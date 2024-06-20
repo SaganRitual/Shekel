@@ -6,7 +6,6 @@ import SpriteKit
 extension GameScene {
 
     override func mouseDown(with event: NSEvent) {
-//        let mouseDispatch = MouseDispatch(from: event, scene: self)
         mouseState = .mouseDown
     }
 
@@ -42,6 +41,13 @@ extension GameScene {
         case .dragBackground:
             let dragDispatch = DragDispatch.end(nil, mouseDispatch)
             selectionMarquee.drag(dragDispatch)
+
+            let vertexA = selectionMarquee.dragAnchor
+            let rectangle = makeRectangle(vertexA: vertexA, vertexB: dragDispatch.location)
+            let enclosedNodes = getNodesInRectangle(rectangle)
+            let enclosedEntities = Set(enclosedNodes.compactMap { $0.getOwnerEntity() })
+            gameController.handleMarqueeSelection(enclosedEntities, dragDispatch)
+
         case .dragHandle:
             break
         case .mouseDown:
@@ -95,6 +101,21 @@ private extension GameScene {
         hotDragTarget = entity
         gameController.drag(dragDispatch)
         mouseState = .dragHandle
+    }
+
+    func getNodesInRectangle(_ rectangle: CGRect) -> [SKNode] {
+        print("rect is \(rectangle)")
+        return entitiesNode.children.compactMap { node in
+            print("position \(node.position)")
+            guard rectangle.contains(node.position) else {
+                print("not contained")
+                return nil
+            }
+
+            print("contained")
+
+            return node.getOwnerEntity() == nil ? nil : node
+        }
     }
 
     func getTopNode(at position: CGPoint) -> SKNode? {

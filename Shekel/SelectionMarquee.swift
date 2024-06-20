@@ -56,7 +56,6 @@ class SelectionMarquee {
         case .continue:
             draw(from: dragAnchor, to: dragDispatch.location)
         case .end:
-            dragAnchor = .zero
             hide()
         }
     }

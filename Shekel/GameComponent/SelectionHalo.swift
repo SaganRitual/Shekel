@@ -24,5 +24,8 @@ class SelectionHalo: GameEntityView {
 
     func deselect() { sceneNode.isHidden = true }
     func select() { sceneNode.isHidden = false }
-    func toggleSelect() { sceneNode.isHidden = !sceneNode.isHidden }
+    func toggleSelect() {
+        sceneNode.isHidden = !sceneNode.isHidden
+        print("toggled to \(sceneNode.isHidden)")
+    }
 }
