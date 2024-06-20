@@ -11,6 +11,23 @@
 		D4D1F0032C2461DC00003163 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0022C2461DC00003163 /* ContentView.swift */; };
 		D4D1F0052C2461DD00003163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D1F0042C2461DD00003163 /* Assets.xcassets */; };
 		D4D1F0082C2461DD00003163 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D1F0072C2461DD00003163 /* Preview Assets.xcassets */; };
+		D4D1F0112C24625A00003163 /* GameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0102C24625A00003163 /* GameEntity.swift */; };
+		D4D1F0142C24648D00003163 /* GameEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0132C24648D00003163 /* GameEntityView.swift */; };
+		D4D1F0162C246BEA00003163 /* SelectionHalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0152C246BEA00003163 /* SelectionHalo.swift */; };
+		D4D1F0192C246CAA00003163 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0182C246CAA00003163 /* GameComponent.swift */; };
+		D4D1F01D2C24700D00003163 /* Gremlin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F01C2C24700D00003163 /* Gremlin.swift */; };
+		D4D1F0212C2471A900003163 /* CoreGraphics+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F01E2C2471A900003163 /* CoreGraphics+Extensions.swift */; };
+		D4D1F0222C2471A900003163 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F01F2C2471A900003163 /* SKNode+Extensions.swift */; };
+		D4D1F0242C2472F600003163 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0232C2472F600003163 /* GameController.swift */; };
+		D4D1F0262C2474E600003163 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0252C2474E600003163 /* GameScene.swift */; };
+		D4D1F0282C2474F000003163 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0272C2474F000003163 /* GameSettings.swift */; };
+		D4D1F02A2C24752100003163 /* SelectionMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0292C24752100003163 /* SelectionMarquee.swift */; };
+		D4D1F02E2C2478D400003163 /* GameScene+Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F02D2C2478D400003163 /* GameScene+Mouse.swift */; };
+		D4D1F0312C247C3B00003163 /* MouseDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0302C247C3B00003163 /* MouseDispatch.swift */; };
+		D4D1F0332C247C5300003163 /* DragDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0322C247C5200003163 /* DragDispatch.swift */; };
+		D4D1F0352C247C5800003163 /* ClickDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0342C247C5800003163 /* ClickDispatch.swift */; };
+		D4D1F0372C248A8B00003163 /* SpriteKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0362C248A8B00003163 /* SpriteKitView.swift */; };
+		D4D1F0392C248A9100003163 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0382C248A9100003163 /* SidebarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +37,23 @@
 		D4D1F0042C2461DD00003163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4D1F0072C2461DD00003163 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4D1F0092C2461DD00003163 /* Shekel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shekel.entitlements; sourceTree = "<group>"; };
+		D4D1F0102C24625A00003163 /* GameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEntity.swift; sourceTree = "<group>"; };
+		D4D1F0132C24648D00003163 /* GameEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEntityView.swift; sourceTree = "<group>"; };
+		D4D1F0152C246BEA00003163 /* SelectionHalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionHalo.swift; sourceTree = "<group>"; };
+		D4D1F0182C246CAA00003163 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
+		D4D1F01C2C24700D00003163 /* Gremlin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gremlin.swift; sourceTree = "<group>"; };
+		D4D1F01E2C2471A900003163 /* CoreGraphics+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Extensions.swift"; sourceTree = "<group>"; };
+		D4D1F01F2C2471A900003163 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		D4D1F0232C2472F600003163 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		D4D1F0252C2474E600003163 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		D4D1F0272C2474F000003163 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		D4D1F0292C24752100003163 /* SelectionMarquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionMarquee.swift; sourceTree = "<group>"; };
+		D4D1F02D2C2478D400003163 /* GameScene+Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Mouse.swift"; sourceTree = "<group>"; };
+		D4D1F0302C247C3B00003163 /* MouseDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseDispatch.swift; sourceTree = "<group>"; };
+		D4D1F0322C247C5200003163 /* DragDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDispatch.swift; sourceTree = "<group>"; };
+		D4D1F0342C247C5800003163 /* ClickDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickDispatch.swift; sourceTree = "<group>"; };
+		D4D1F0362C248A8B00003163 /* SpriteKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteKitView.swift; sourceTree = "<group>"; };
+		D4D1F0382C248A9100003163 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +86,17 @@
 		D4D1EFFF2C2461DC00003163 /* Shekel */ = {
 			isa = PBXGroup;
 			children = (
+				D4D1F0202C2471A900003163 /* Extensions */,
+				D4D1F0172C246C5700003163 /* GameComponent */,
+				D4D1F00F2C24624600003163 /* GameEntity */,
+				D4D1F02F2C247C2600003163 /* MouseInput */,
+				D4D1F0122C24646C00003163 /* View */,
+				D4D1F0232C2472F600003163 /* GameController.swift */,
+				D4D1F0252C2474E600003163 /* GameScene.swift */,
+				D4D1F02D2C2478D400003163 /* GameScene+Mouse.swift */,
+				D4D1F0272C2474F000003163 /* GameSettings.swift */,
+				D4D1F0292C24752100003163 /* SelectionMarquee.swift */,
 				D4D1F0002C2461DC00003163 /* ShekelApp.swift */,
-				D4D1F0022C2461DC00003163 /* ContentView.swift */,
 				D4D1F0042C2461DD00003163 /* Assets.xcassets */,
 				D4D1F0092C2461DD00003163 /* Shekel.entitlements */,
 				D4D1F0062C2461DD00003163 /* Preview Content */,
@@ -67,6 +110,54 @@
 				D4D1F0072C2461DD00003163 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D4D1F00F2C24624600003163 /* GameEntity */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F0102C24625A00003163 /* GameEntity.swift */,
+				D4D1F01C2C24700D00003163 /* Gremlin.swift */,
+			);
+			path = GameEntity;
+			sourceTree = "<group>";
+		};
+		D4D1F0122C24646C00003163 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F0022C2461DC00003163 /* ContentView.swift */,
+				D4D1F0132C24648D00003163 /* GameEntityView.swift */,
+				D4D1F0382C248A9100003163 /* SidebarView.swift */,
+				D4D1F0362C248A8B00003163 /* SpriteKitView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D4D1F0172C246C5700003163 /* GameComponent */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F0182C246CAA00003163 /* GameComponent.swift */,
+				D4D1F0152C246BEA00003163 /* SelectionHalo.swift */,
+			);
+			path = GameComponent;
+			sourceTree = "<group>";
+		};
+		D4D1F0202C2471A900003163 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F01E2C2471A900003163 /* CoreGraphics+Extensions.swift */,
+				D4D1F01F2C2471A900003163 /* SKNode+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D4D1F02F2C247C2600003163 /* MouseInput */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F0342C247C5800003163 /* ClickDispatch.swift */,
+				D4D1F0322C247C5200003163 /* DragDispatch.swift */,
+				D4D1F0302C247C3B00003163 /* MouseDispatch.swift */,
+			);
+			path = MouseInput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +230,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D1F0372C248A8B00003163 /* SpriteKitView.swift in Sources */,
+				D4D1F02E2C2478D400003163 /* GameScene+Mouse.swift in Sources */,
+				D4D1F0392C248A9100003163 /* SidebarView.swift in Sources */,
+				D4D1F0162C246BEA00003163 /* SelectionHalo.swift in Sources */,
+				D4D1F02A2C24752100003163 /* SelectionMarquee.swift in Sources */,
+				D4D1F0332C247C5300003163 /* DragDispatch.swift in Sources */,
+				D4D1F0312C247C3B00003163 /* MouseDispatch.swift in Sources */,
+				D4D1F0242C2472F600003163 /* GameController.swift in Sources */,
+				D4D1F0192C246CAA00003163 /* GameComponent.swift in Sources */,
+				D4D1F0222C2471A900003163 /* SKNode+Extensions.swift in Sources */,
+				D4D1F0352C247C5800003163 /* ClickDispatch.swift in Sources */,
 				D4D1F0032C2461DC00003163 /* ContentView.swift in Sources */,
+				D4D1F0262C2474E600003163 /* GameScene.swift in Sources */,
+				D4D1F0142C24648D00003163 /* GameEntityView.swift in Sources */,
+				D4D1F0112C24625A00003163 /* GameEntity.swift in Sources */,
+				D4D1F0282C2474F000003163 /* GameSettings.swift in Sources */,
+				D4D1F0212C2471A900003163 /* CoreGraphics+Extensions.swift in Sources */,
 				D4D1F0012C2461DC00003163 /* ShekelApp.swift in Sources */,
+				D4D1F01D2C24700D00003163 /* Gremlin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
