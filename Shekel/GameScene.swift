@@ -4,8 +4,9 @@ import Foundation
 import SpriteKit
  
 class GameScene: SKScene {
+    var playgroundState: PlaygroundState!
     var gameController: GameController!
-    let selectionMarquee: SelectionMarquee
+    var selectionMarquee: SelectionMarquee!
 
     let cameraNode = SKCameraNode()
     let entitiesNode = SKNode()
@@ -18,8 +19,7 @@ class GameScene: SKScene {
         case dragBackground, dragHandle, dragSubhandle, idle, mouseDown
     }
 
-    init(_ size: CGSize, _ selectionMarquee: SelectionMarquee) {
-        self.selectionMarquee = selectionMarquee
+    init(_ size: CGSize) {
         super.init(size: size)
 
         isUserInteractionEnabled = true
@@ -32,17 +32,24 @@ class GameScene: SKScene {
         addChild(cameraNode)
         camera = cameraNode
 
-//        cameraNode.position = gameController.playgroundState.cameraPosition
-//        cameraNode.setScale(gameController.playgroundState.cameraScale)
-
         addChild(entitiesNode)
-        addChild(selectionMarquee.marqueeRootNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    func postInit(_ gameController: GameController, _ playgroundState: PlaygroundState, _ selectionMarquee: SelectionMarquee) {
+        self.gameController = gameController
+        self.playgroundState = playgroundState
+        self.selectionMarquee = selectionMarquee
+
+        cameraNode.position = playgroundState.cameraPosition
+        cameraNode.setScale(playgroundState.cameraScale)
+
+        addChild(selectionMarquee.marqueeRootNode)
+    }
+
     static var dcsCount = 0
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
@@ -57,7 +64,7 @@ class GameScene: SKScene {
         Self.dcsCount += 1
         print("old size \(oldSize) new size \(self.size), count \(Self.dcsCount)")
         Task { @MainActor in
-            gameController?.playgroundState.viewSize = self.size
+            playgroundState.viewSize = self.size
         }
     }
 

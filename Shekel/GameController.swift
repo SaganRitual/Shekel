@@ -6,14 +6,16 @@ import SpriteKit
 final class GameController: ObservableObject {
     let uuid = UUID()
     var gameScene: GameScene!
-    let playgroundState: PlaygroundState
-    let selectionMarquee: SelectionMarquee
+
+    var selectionMarquee: SelectionMarquee!
+    var playgroundState: PlaygroundState!
 
     var entities = Set<GameEntity>()
 
-    init(playgroundState: PlaygroundState) {
-        self.selectionMarquee = SelectionMarquee(playgroundState)
+    func postInit(_ playgroundState: PlaygroundState) {
         self.playgroundState = playgroundState
+        self.selectionMarquee = SelectionMarquee(playgroundState)
+        self.gameScene.postInit(self, playgroundState, selectionMarquee)
     }
 
     func assignPhysicsBody(to entity: GameEntity) {
@@ -76,9 +78,7 @@ final class GameController: ObservableObject {
     }
     
     func getSelected() -> Set<GameEntity> {
-        let sel = getSelected(self.entities)
-        print("c \(sel.count) \(uuid.uuidString)")
-        return sel
+        getSelected(self.entities)
     }
 
     func getSelected(_ entities: Set<GameEntity>) -> Set<GameEntity> {
@@ -98,8 +98,8 @@ final class GameController: ObservableObject {
         }
     }
 
-    func makeGameScene(_ size: CGSize) -> GameScene {
-        let gameScene = GameScene(size, selectionMarquee)
+    func installGameScene(_ size: CGSize) -> GameScene {
+        let gameScene = GameScene(size)
         gameScene.gameController = self
         gameScene.scaleMode = .resizeFill
         gameScene.isUserInteractionEnabled = true

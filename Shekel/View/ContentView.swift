@@ -3,21 +3,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var playgroundState: PlaygroundState
-    @StateObject var gameController: GameController
-
-    init() {
-        _playgroundState = StateObject(wrappedValue: PlaygroundState())
-        _gameController = StateObject(wrappedValue: GameController(playgroundState: _playgroundState))
-    }
+    @StateObject var playgroundState = PlaygroundState()
+    @StateObject var gameController = GameController()
 
     var body: some View {
-        HStack {
-            SpriteKitView()
-            DashboardView()
-                .frame(width: 400)
-        }
-        .padding()
-        .environmentObject(gameController)
+        GameControllerView()
+            .environmentObject(gameController)
+            .environmentObject(playgroundState)
+            .onAppear() { gameController.postInit(playgroundState) }
     }
 }

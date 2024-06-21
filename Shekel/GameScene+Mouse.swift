@@ -11,7 +11,7 @@ extension GameScene {
 
     override func mouseDragged(with event: NSEvent) {
         let mouseDispatch = MouseDispatch(from: event, scene: self)
-        gameController.playgroundState.mousePosition = mouseDispatch.location
+        playgroundState.mousePosition = mouseDispatch.location
 
         if case .mouseDown = mouseState {
             dragBegin(mouseDispatch)
@@ -34,7 +34,7 @@ extension GameScene {
 
     override func mouseMoved(with event: NSEvent) {
         let mouseDispatch = MouseDispatch(from: event, scene: self)
-        gameController.playgroundState.mousePosition = mouseDispatch.location
+        playgroundState.mousePosition = mouseDispatch.location
     }
 
     override func mouseUp(with event: NSEvent) {

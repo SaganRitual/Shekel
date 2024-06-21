@@ -5,6 +5,7 @@ import SwiftUI
 
 struct PlaygroundStateView: View {
     @EnvironmentObject var gameController: GameController
+    @EnvironmentObject var playgroundState: PlaygroundState
 
     var body: some View {
         VStack {
@@ -25,14 +26,14 @@ struct PlaygroundStateView: View {
             HStack {
                 Text("View/Scene")
                 Spacer()
-                Text("\(gameController.playgroundState.viewSize)")
+                Text("\(playgroundState.viewSize)")
             }
             .padding(.bottom)
 
             HStack {
                 Text("Mouse Position")
                 Spacer()
-                Text(Utility.mousePositionString(gameController.playgroundState.mousePosition))
+                Text(Utility.mousePositionString(playgroundState.mousePosition))
             }
         }
         .monospaced()

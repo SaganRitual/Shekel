@@ -65,8 +65,8 @@ struct SpriteKitView: NSViewRepresentable {
         view.showsQuadCount = true
         view.isAsynchronous = true
         view.allowsTransparency = true
-        
-        let gameScene = gameController.makeGameScene(view.bounds.size)
+
+        let gameScene = gameController.installGameScene(view.bounds.size)
 
         view.presentScene(gameScene)
 

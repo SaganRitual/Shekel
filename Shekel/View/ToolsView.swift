@@ -4,13 +4,14 @@ import SwiftUI
 
 struct ToolsView: View {
     @EnvironmentObject var gameController: GameController
+    @EnvironmentObject var playgroundState: PlaygroundState
 
     var body: some View {
         VStack {
             Text("Tools")
                 .underline()
 
-            switch gameController.playgroundState.selectionState {
+            switch playgroundState.selectionState {
             case .many:
                 Text("Multiple items selected")
             case .none:
