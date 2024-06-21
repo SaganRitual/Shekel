@@ -3,7 +3,34 @@
 import SwiftUI
 
 struct ToolsView: View {
+    @EnvironmentObject var gameController: GameController
+
     var body: some View {
-        Text("Tools")
+        VStack {
+            Text("Tools")
+                .underline()
+
+            switch gameController.playgroundState.selectionState {
+            case .many:
+                Text("Multiple items selected")
+            case .none:
+                Text("Nothing Selected")
+            case .one:
+                Text("Physics")
+                    .underline()
+
+                if let gremlin = gameController.getSelected().first {
+                    if let pb = gremlin.physicsBody {
+                        PhysicsBodyView(pb)
+                    } else {
+                        Button("Assign Physics Body") {
+                            gameController.assignPhysicsBody(to: gremlin)
+                        }
+                    }
+                } else {
+                    Text("huh?")
+                }
+            }
+        }
     }
 }

@@ -29,8 +29,11 @@ struct PlaygroundStateView: View {
             }
             .padding(.bottom)
 
-            Text("Mouse Position: \(gameController.playgroundState.mousePosition)")
-            Spacer()
+            HStack {
+                Text("Mouse Position")
+                Spacer()
+                Text(Utility.mousePositionString(gameController.playgroundState.mousePosition))
+            }
         }
         .monospaced()
     }

@@ -1,8 +1,10 @@
 // We are a way for the cosmos to know itself. -- C. Sagan
 
 import Foundation
+import SpriteKit
 
 final class GameController: ObservableObject {
+    let uuid = UUID()
     var gameScene: GameScene!
     let playgroundState: PlaygroundState
     let selectionMarquee: SelectionMarquee
@@ -12,6 +14,16 @@ final class GameController: ObservableObject {
     init(playgroundState: PlaygroundState) {
         self.selectionMarquee = SelectionMarquee(playgroundState)
         self.playgroundState = playgroundState
+    }
+
+    func assignPhysicsBody(to entity: GameEntity) {
+        guard let gremlin = entity as? Gremlin else {
+            return
+        }
+
+        let sprite = gremlin.view!.sceneNode as! SKSpriteNode
+
+        gremlin.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.height / 2)
     }
 
     func click(_ clickDispatch: ClickDispatch) {
@@ -36,6 +48,7 @@ final class GameController: ObservableObject {
 
     func deselect(_ entity: GameEntity) {
         entity.halo?.deselect()
+        playgroundState.setSelectionState(getSelected())
     }
 
     func deselectAll() {
@@ -60,6 +73,20 @@ final class GameController: ObservableObject {
         case .end:
             break
         }
+    }
+    
+    func getSelected() -> Set<GameEntity> {
+        let sel = getSelected(self.entities)
+        print("c \(sel.count) \(uuid.uuidString)")
+        return sel
+    }
+
+    func getSelected(_ entities: Set<GameEntity>) -> Set<GameEntity> {
+        let selected = entities.compactMap { entity in
+            entity.halo!.isSelected ? entity : nil
+        }
+
+        return Set(selected)
     }
 
     func handleMarqueeSelection(_ entities: Set<GameEntity>, _ dragDispatch: DragDispatch) {
@@ -126,6 +153,7 @@ final class GameController: ObservableObject {
 
     func select(_ entity: GameEntity) {
         entity.halo?.select()
+        playgroundState.setSelectionState(getSelected())
     }
 
     func setRoscaleAnchorsForSelected() {
@@ -160,21 +188,6 @@ final class GameController: ObservableObject {
 
     func toggleSelect(_ entity: GameEntity) {
         entity.halo?.toggleSelect()
+        playgroundState.setSelectionState(getSelected())
     }
-}
-
-private extension GameController {
-
-    func getSelected() -> Set<GameEntity> {
-        getSelected(self.entities)
-    }
-
-    func getSelected(_ entities: Set<GameEntity>) -> Set<GameEntity> {
-        let selected = entities.compactMap { entity in
-            entity.halo!.isSelected ? entity : nil
-        }
-
-        return Set(selected)
-    }
-
 }

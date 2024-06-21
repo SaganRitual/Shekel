@@ -31,6 +31,8 @@
 		D4D1F03E2C25521E00003163 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F03D2C25521E00003163 /* DashboardView.swift */; };
 		D4D1F0402C25542A00003163 /* CommandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F03F2C25542A00003163 /* CommandsView.swift */; };
 		D4D1F0422C25546C00003163 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0412C25546C00003163 /* ToolsView.swift */; };
+		D4D1F0442C25EB4500003163 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0432C25EB4500003163 /* Utility.swift */; };
+		D4D1F0462C25F5E000003163 /* PhysicsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		D4D1F03D2C25521E00003163 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		D4D1F03F2C25542A00003163 /* CommandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsView.swift; sourceTree = "<group>"; };
 		D4D1F0412C25546C00003163 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
+		D4D1F0432C25EB4500003163 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBodyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				D4D1F0272C2474F000003163 /* PlaygroundState.swift */,
 				D4D1F0292C24752100003163 /* SelectionMarquee.swift */,
 				D4D1F0002C2461DC00003163 /* ShekelApp.swift */,
+				D4D1F0432C25EB4500003163 /* Utility.swift */,
 				D4D1F0042C2461DD00003163 /* Assets.xcassets */,
 				D4D1F0092C2461DD00003163 /* Shekel.entitlements */,
 				D4D1F03C2C2551E100003163 /* Specs.md */,
@@ -136,6 +141,7 @@
 				D4D1F0022C2461DC00003163 /* ContentView.swift */,
 				D4D1F03D2C25521E00003163 /* DashboardView.swift */,
 				D4D1F0132C24648D00003163 /* GameEntityView.swift */,
+				D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */,
 				D4D1F0382C248A9100003163 /* PlaygroundStateView.swift */,
 				D4D1F0362C248A8B00003163 /* SpriteKitView.swift */,
 				D4D1F0412C25546C00003163 /* ToolsView.swift */,
@@ -257,9 +263,11 @@
 				D4D1F0262C2474E600003163 /* GameScene.swift in Sources */,
 				D4D1F0142C24648D00003163 /* GameEntityView.swift in Sources */,
 				D4D1F0112C24625A00003163 /* GameEntity.swift in Sources */,
+				D4D1F0442C25EB4500003163 /* Utility.swift in Sources */,
 				D4D1F0282C2474F000003163 /* PlaygroundState.swift in Sources */,
 				D4D1F0402C25542A00003163 /* CommandsView.swift in Sources */,
 				D4D1F0212C2471A900003163 /* CoreGraphics+Extensions.swift in Sources */,
+				D4D1F0462C25F5E000003163 /* PhysicsBodyView.swift in Sources */,
 				D4D1F03E2C25521E00003163 /* DashboardView.swift in Sources */,
 				D4D1F0012C2461DC00003163 /* ShekelApp.swift in Sources */,
 				D4D1F01D2C24700D00003163 /* Gremlin.swift in Sources */,

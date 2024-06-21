@@ -15,17 +15,13 @@ enum ActionType {
     }
 }
 
-enum SelectionState {
-    case many, none, one
-}
-
 struct DashboardView: View {
-    @StateObject var playgroundState: PlaygroundState
-
     var body: some View {
         VStack(spacing: 20) {
             PlaygroundStateView()
+            Spacer()
             CommandsView()
+            Spacer()
             ToolsView()
         }
         .padding()

@@ -14,6 +14,11 @@ class GameEntity {
 
     var halo: SelectionHalo? { nil }
 
+    var physicsBody: SKPhysicsBody? {
+        get { view?.sceneNode.physicsBody }
+        set { view?.sceneNode.physicsBody = newValue }
+    }
+
     var position: CGPoint {
         get { view?.sceneNode.position ?? .zero }
         set {
