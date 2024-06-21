@@ -20,7 +20,8 @@ class SelectionHaloRS: SelectionHalo {
     }
 
     override func setScale(_ scale: CGFloat) {
-        subhandles.values.forEach { $0.sceneNode.setScale(1 / scale) }
+        let subhandlesScale = 2 * log(scale) + 1
+        subhandles.values.forEach { $0.sceneNode.setScale(1 / subhandlesScale) }
         super.setScale(scale)
     }
 
