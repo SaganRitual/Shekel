@@ -25,7 +25,7 @@ struct PlaygroundStateView: View {
             HStack {
                 Text("View/Scene")
                 Spacer()
-//                Text("\(gameController.playgroundState)")
+                Text("\(gameController.playgroundState.viewSize)")
             }
             .padding(.bottom)
 

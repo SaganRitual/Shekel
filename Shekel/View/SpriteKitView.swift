@@ -4,41 +4,80 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
+class MySKView: SKView {
+    var trackingArea: NSTrackingArea?
+
+    override var acceptsFirstResponder: Bool { return true }
+
+    override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+        self.nextResponder?.mouseDown(with: event)
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        super.mouseDragged(with: event)
+        self.nextResponder?.mouseDragged(with: event)
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        super.mouseUp(with: event)
+        self.nextResponder?.mouseUp(with: event)
+    }
+
+    override func mouseMoved(with event: NSEvent) {
+        super.mouseMoved(with: event)
+        self.nextResponder?.mouseMoved(with: event)
+    }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+
+        if let existingArea = trackingArea {
+            removeTrackingArea(existingArea)
+        }
+
+        let options: NSTrackingArea.Options = [
+            .mouseMoved,
+            .activeInKeyWindow,
+            .inVisibleRect
+        ]
+
+        trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
+        addTrackingArea(trackingArea!)
+    }
+}
+
 struct SpriteKitView: NSViewRepresentable {
     @EnvironmentObject var gameController: GameController
 
-    class Coordinator {
-        var observation: NSKeyValueObservation?
-    }
+    func makeNSView(context: Context) -> MySKView {
+        let view = MySKView()
 
-    func dismantleNSView(_ nsView: SKView, coordinator: Coordinator) {
-        coordinator.observation = nil
-    }
+        view.ignoresSiblingOrder = true
+        view.showsFPS = true
+        view.showsNodeCount = true
+        view.preferredFramesPerSecond = 60
+        view.shouldCullNonVisibleNodes = false
+        view.isAsynchronous = false
+        view.showsPhysics = true
+        view.showsFields = true
+        view.showsDrawCount = true
+        view.showsQuadCount = true
+        view.isAsynchronous = true
+        view.allowsTransparency = true
+        
+        let gameScene = gameController.makeGameScene(view.bounds.size)
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
+        view.presentScene(gameScene)
 
-    func makeNSView(context: Context) -> SKView {
-        let view = SKView()
-
-        view.presentScene(gameController.gameScene)
-
-        let observation = view.observe(\.frame) { view, _ in
-            view.trackingAreas.forEach(view.removeTrackingArea)
-
-            let trackingArea = NSTrackingArea(rect: view.bounds,
-                                            options: [.mouseMoved, .activeInKeyWindow],
-                                            owner: view, userInfo: nil)
-            view.addTrackingArea(trackingArea)
+        DispatchQueue.main.async {
+            view.window?.makeFirstResponder(view)
         }
-
-        context.coordinator.observation = observation
 
         return view
     }
 
-    func updateNSView(_ nsView: SKView, context: Context) {
-
+    func updateNSView(_ nsView: MySKView, context: Context) {
+        // Update SKView properties here if needed
     }
 }

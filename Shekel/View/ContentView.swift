@@ -9,7 +9,6 @@ struct ContentView: View {
     var body: some View {
         HStack {
             SpriteKitView()
-                .padding()
             PlaygroundStateView()
                 .frame(width: 400)
         }

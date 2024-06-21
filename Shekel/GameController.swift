@@ -3,18 +3,15 @@
 import Foundation
 
 final class GameController: ObservableObject {
-    let gameScene: GameScene
+    var gameScene: GameScene!
     let playgroundState: PlaygroundState
+    let selectionMarquee: SelectionMarquee
 
     var entities = Set<GameEntity>()
 
     init(playgroundState: PlaygroundState) {
-        let selectionMarquee = SelectionMarquee(playgroundState)
-        let gameScene = GameScene(selectionMarquee)
-
+        self.selectionMarquee = SelectionMarquee(playgroundState)
         self.playgroundState = playgroundState
-        self.gameScene = gameScene
-        self.gameScene.gameController = self
     }
 
     func click(_ clickDispatch: ClickDispatch) {
@@ -72,6 +69,15 @@ final class GameController: ObservableObject {
             deselectAll()
             entities.forEach { select($0) }
         }
+    }
+
+    func makeGameScene(_ size: CGSize) -> GameScene {
+        let gameScene = GameScene(size, selectionMarquee)
+        gameScene.gameController = self
+        gameScene.scaleMode = .resizeFill
+        gameScene.isUserInteractionEnabled = true
+        self.gameScene = gameScene
+        return gameScene
     }
 
     func moveSelected(_ dragDispatch: DragDispatch) {
