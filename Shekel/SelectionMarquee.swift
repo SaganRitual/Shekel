@@ -18,15 +18,15 @@ class SelectionMarquee {
         .w: CGPoint(x: 0.5, y: 1)
     ]
 
-    let gameSettings: GameSettings
+    let playgroundState: PlaygroundState
     let marqueeRootNode = SKNode()
 
     var borderSprites = [SpriteWorld.Directions: SKSpriteNode]()
 
     var dragAnchor = CGPoint.zero
 
-    init(_ gameSettings: GameSettings) {
-        self.gameSettings = gameSettings
+    init(_ playgroundState: PlaygroundState) {
+        self.playgroundState = playgroundState
 
         SpriteWorld.Directions.allCases.forEach { direction in
             let sprite = SKSpriteNode(imageNamed: "pixel_1x1")
@@ -88,12 +88,12 @@ private extension SelectionMarquee {
         // The negative camera scale is an artifact of the way we convert
         // the start/end vertices from the view, I think. Come back to it
         // and make more sense of it at some point
-        let hScale = CGSize(width: boxSize.width, height: 2) * -gameSettings.cameraScale
+        let hScale = CGSize(width: boxSize.width, height: 2) * -playgroundState.cameraScale
 
         borderSprites[.n]!.scale(to: hScale)
         borderSprites[.s]!.scale(to: hScale)
 
-        let vScale = CGSize(width: 2, height: boxSize.height) * gameSettings.cameraScale
+        let vScale = CGSize(width: 2, height: boxSize.height) * playgroundState.cameraScale
 
         borderSprites[.e]!.scale(to: vScale)
         borderSprites[.w]!.scale(to: vScale)

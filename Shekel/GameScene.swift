@@ -55,8 +55,8 @@ class GameScene: SKScene {
         addChild(cameraNode)
         camera = cameraNode
 
-        cameraNode.position = gameController.gameSettings.cameraPosition
-        cameraNode.setScale(gameController.gameSettings.cameraScale)
+        cameraNode.position = gameController.playgroundState.cameraPosition
+        cameraNode.setScale(gameController.playgroundState.cameraScale)
 
         addChild(entitiesNode)
         addChild(selectionMarquee.marqueeRootNode)

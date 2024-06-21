@@ -3,17 +3,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var gameSettings = GameSettings()
+    @StateObject var playgroundState = PlaygroundState()
     @EnvironmentObject var gameController: GameController
 
     var body: some View {
         HStack {
             SpriteKitView()
                 .padding()
-            SidebarView()
+            PlaygroundStateView()
                 .frame(width: 400)
         }
         .padding()
-        .environmentObject(GameController(gameSettings: gameSettings))
+        .environmentObject(GameController(playgroundState: playgroundState))
     }
 }

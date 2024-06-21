@@ -4,15 +4,15 @@ import Foundation
 
 final class GameController: ObservableObject {
     let gameScene: GameScene
-    let gameSettings: GameSettings
+    let playgroundState: PlaygroundState
 
     var entities = Set<GameEntity>()
 
-    init(gameSettings: GameSettings) {
-        let selectionMarquee = SelectionMarquee(gameSettings)
+    init(playgroundState: PlaygroundState) {
+        let selectionMarquee = SelectionMarquee(playgroundState)
         let gameScene = GameScene(selectionMarquee)
 
-        self.gameSettings = gameSettings
+        self.playgroundState = playgroundState
         self.gameScene = gameScene
         self.gameScene.gameController = self
     }

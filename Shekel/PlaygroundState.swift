@@ -3,7 +3,7 @@
 import Foundation
 import SwiftUI
 
-class GameSettings: ObservableObject {
+class PlaygroundState: ObservableObject {
     @Published var cameraPosition: CGPoint = .zero
     @Published var cameraScale: CGFloat = 1
     @Published var mousePosition: CGPoint = .zero
