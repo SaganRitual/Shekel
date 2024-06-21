@@ -9,6 +9,9 @@ class GameEntity {
     var dragAnchor: CGPoint?
     var dragging = false
 
+    var rotationAnchor: CGFloat?
+    var scaleAnchor: CGFloat?
+
     var halo: SelectionHalo? { nil }
 
     var position: CGPoint {
@@ -16,6 +19,26 @@ class GameEntity {
         set {
             view?.sceneNode.position = newValue
             halo?.sceneNode.position = newValue
+        }
+    }
+
+    var rotation: CGFloat {
+        get { view?.sceneNode.zRotation ?? 0 }
+        set {
+            view?.sceneNode.zRotation = newValue
+            halo?.sceneNode.zRotation = newValue
+        }
+    }
+
+    var scale: CGFloat {
+        get {
+            guard let sn = view?.sceneNode else { return 0 }
+            return sqrt(2 * sn.xScale * sn.xScale)
+        }
+
+        set {
+            view?.sceneNode.setScale(newValue)
+            halo?.setScale(newValue)
         }
     }
 

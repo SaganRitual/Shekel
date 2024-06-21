@@ -12,9 +12,10 @@ class GameScene: SKScene {
 
     var mouseState = MouseState.idle
     var hotDragTarget: GameEntity?
+    var hotDragSubhandle: SelectionHaloRS.Directions?
 
     enum MouseState {
-        case dragBackground, dragHandle, idle, mouseDown
+        case dragBackground, dragHandle, dragSubhandle, idle, mouseDown
     }
 
     init(_ selectionMarquee: SelectionMarquee) {

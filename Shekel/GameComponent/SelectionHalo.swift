@@ -24,8 +24,13 @@ class SelectionHalo: GameEntityView {
 
     func deselect() { sceneNode.isHidden = true }
     func select() { sceneNode.isHidden = false }
-    func toggleSelect() {
-        sceneNode.isHidden = !sceneNode.isHidden
-        print("toggled to \(sceneNode.isHidden)")
+    func toggleSelect() { sceneNode.isHidden = !sceneNode.isHidden }
+
+    func setScale(_ scale: CGFloat) {
+        sceneNode.setScale(scale)
+
+        if let shape = sceneNode as? SKShapeNode {
+            shape.lineWidth = 1 / scale
+        }
     }
 }

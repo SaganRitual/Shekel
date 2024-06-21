@@ -15,12 +15,16 @@ final class Gremlin: GameEntity {
     }
 
     static func make(at position: CGPoint) -> Gremlin {
-        let halo = SelectionHalo()
+        let halo = SelectionHaloRS.make()
         let view = GremlinView()
         let gremlin = Gremlin(halo: halo, view: view)
 
         halo.sceneNode.setOwnerEntity(gremlin)
         view.sceneNode.setOwnerEntity(gremlin)
+
+        halo.subhandles.values.forEach { sh in
+            sh.sceneNode.setOwnerEntity(gremlin)
+        }
 
         gremlin.position = position
 

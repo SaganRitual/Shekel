@@ -13,7 +13,7 @@ extension GameScene {
         let mouseDispatch = MouseDispatch(from: event, scene: self)
         gameController.gameSettings.mousePosition = mouseDispatch.location
 
-        if mouseState == .mouseDown {
+        if case .mouseDown = mouseState {
             dragBegin(mouseDispatch)
         }
 
@@ -24,6 +24,9 @@ extension GameScene {
             selectionMarquee.drag(dragDispatch)
         case .dragHandle:
             gameController.drag(dragDispatch)
+        case .dragSubhandle:
+            let rsDragDispatch = DragDispatch.continueRS(hotDragTarget, hotDragSubhandle!, mouseDispatch)
+            gameController.subhandleDrag(rsDragDispatch)
         default:
             fatalError("Nine out of ten tech CEOs say this can't happen")
         }
@@ -50,6 +53,10 @@ extension GameScene {
 
         case .dragHandle:
             break
+
+        case .dragSubhandle:
+            break
+
         case .mouseDown:
             // Note that we're checking the nodes for owner entity. We shouldn't have to
             // do it, but sometimes nodes(at:) will include nodes we don't want,
@@ -96,6 +103,18 @@ private extension GameScene {
             return
         }
 
+        if let haloRS = entity.halo as? SelectionHaloRS {
+            if let direction = haloRS.getSubhandleDirection(topNode) {
+                let rsDragDispatch = DragDispatch.beginRS(entity, direction, mouseDispatch)
+
+                hotDragTarget = entity
+                hotDragSubhandle = direction
+                gameController.subhandleDrag(rsDragDispatch)
+                mouseState = .dragSubhandle
+                return
+            }
+        }
+
         let dragDispatch = DragDispatch.begin(entity, mouseDispatch)
 
         hotDragTarget = entity
@@ -104,17 +123,16 @@ private extension GameScene {
     }
 
     func getNodesInRectangle(_ rectangle: CGRect) -> [SKNode] {
-        print("rect is \(rectangle)")
         return entitiesNode.children.compactMap { node in
-            print("position \(node.position)")
             guard rectangle.contains(node.position) else {
-                print("not contained")
                 return nil
             }
 
-            print("contained")
+            if node.getOwnerEntity() == nil {
+                return nil
+            }
 
-            return node.getOwnerEntity() == nil ? nil : node
+            return node
         }
     }
 
