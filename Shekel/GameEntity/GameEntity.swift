@@ -33,7 +33,7 @@ class GameEntity {
     var scale: CGFloat {
         get {
             guard let sn = view?.sceneNode else { return 0 }
-            return sqrt(2 * sn.xScale * sn.xScale)
+            return sn.xScale
         }
 
         set {

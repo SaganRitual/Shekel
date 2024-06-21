@@ -94,8 +94,10 @@ final class GameController: ObservableObject {
     }
 
     func roscaleSelected(_ dragDispatch: DragDispatch) {
-        let ev = dragDispatch.location
-        let delta = ev - dragDispatch.entity!.dragAnchor! + (dragDispatch.entity!.halo! as! SelectionHaloRS).subhandles[dragDispatch.subhandleDirection!]!.sceneNode.position
+        let endVertex = dragDispatch.location
+        let dragAnchor = dragDispatch.entity!.dragAnchor!
+
+        let delta = endVertex - dragAnchor
         let distance = delta.magnitude
         let scale = max(1, distance / SelectionHaloRS.radius)
         var rotation = atan2(delta.y, delta.x)
@@ -116,23 +118,6 @@ final class GameController: ObservableObject {
         }
     }
 
-    func subhandleDrag(_ dragDispatch: DragDispatch) {
-        switch dragDispatch.phase {
-        case .begin:
-            let entity = dragDispatch.entity!
-
-            entity.dragAnchor = dragDispatch.location
-            setRoscaleAnchorsForSelected()
-
-        case .continue:
-            roscaleSelected(dragDispatch)
-
-        case .end:
-            break
-        }
-
-    }
-
     func select(_ entity: GameEntity) {
         entity.halo?.select()
     }
@@ -148,6 +133,23 @@ final class GameController: ObservableObject {
         getSelected().forEach { entity in
             entity.dragAnchor = entity.position
         }
+    }
+
+    func subhandleDrag(_ dragDispatch: DragDispatch) {
+        switch dragDispatch.phase {
+        case .begin:
+            let entity = dragDispatch.entity!
+
+            entity.dragAnchor = entity.position
+            setRoscaleAnchorsForSelected()
+
+        case .continue:
+            roscaleSelected(dragDispatch)
+
+        case .end:
+            break
+        }
+
     }
 
     func toggleSelect(_ entity: GameEntity) {
