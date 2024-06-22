@@ -48,6 +48,19 @@ class GameEntity {
     }
 
     var view: GameEntityView? { nil }
+
+    func addActionToken(_ token: any ActionTokenProtocol) { }
+    func getActionTokens() -> [ActionTokenContainer] { [] }
+
+    func restoreActionAnchors() { }
+
+    func setAssignActionsMode(_ setIt: Bool) {
+        halo?.setSelectionMode(setIt ? .assignActions : .normal)
+    }
+
+    func cancelActionsMode() { }
+    func commitActions(duration: TimeInterval) { }
+    func startActionsMode() { }
 }
 
 extension GameEntity: Equatable, Hashable {

@@ -49,7 +49,7 @@ extension GameScene {
             let rectangle = makeRectangle(vertexA: vertexA, vertexB: dragDispatch.location)
             let enclosedNodes = getNodesInRectangle(rectangle)
             let enclosedEntities = Set(enclosedNodes.compactMap { $0.getOwnerEntity() })
-            gameController.handleMarqueeSelection(enclosedEntities, dragDispatch)
+            gameController.commitMarqueeSelection(enclosedEntities, dragDispatch)
 
         case .dragHandle:
             break

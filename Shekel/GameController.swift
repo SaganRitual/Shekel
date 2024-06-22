@@ -1,5 +1,6 @@
 // We are a way for the cosmos to know itself. -- C. Sagan
 
+import Combine
 import Foundation
 import SpriteKit
 
@@ -12,10 +13,25 @@ final class GameController: ObservableObject {
 
     var entities = Set<GameEntity>()
 
+//    private var cancellable: AnyCancellable?
+
+//    deinit {
+//        cancellable?.cancel()
+//    }
+
     func postInit(_ playgroundState: PlaygroundState) {
         self.playgroundState = playgroundState
         self.selectionMarquee = SelectionMarquee(playgroundState)
         self.gameScene.postInit(self, playgroundState, selectionMarquee)
+
+//        cancellable = playgroundState.$assignSpaceActions
+//            .scan((false, false)) { (previous, current) in
+//                return (previous.1, current)
+//            }
+//            .sink { [weak self] (oldValue, newValue) in
+//                guard let selectedEntity = self?.getSelected().first else { return }
+//                selectedEntity.setAssignActionsMode(newValue)
+//            }
     }
 
     func assignPhysicsBody(to entity: GameEntity) {
@@ -48,7 +64,18 @@ final class GameController: ObservableObject {
         select(gremlin)
     }
 
+    func commitMarqueeSelection(_ entities: Set<GameEntity>, _ dragDispatch: DragDispatch) {
+        if dragDispatch.shift {
+            entities.forEach { toggleSelect($0) }
+        } else {
+            deselectAll()
+            entities.forEach { select($0) }
+        }
+    }
+
     func deselect(_ entity: GameEntity) {
+        cancelAssignActionsMode()
+
         entity.halo?.deselect()
         playgroundState.setSelectionState(getSelected())
     }
@@ -87,15 +114,6 @@ final class GameController: ObservableObject {
         }
 
         return Set(selected)
-    }
-
-    func handleMarqueeSelection(_ entities: Set<GameEntity>, _ dragDispatch: DragDispatch) {
-        if dragDispatch.shift {
-            entities.forEach { toggleSelect($0) }
-        } else {
-            deselectAll()
-            entities.forEach { select($0) }
-        }
     }
 
     func installGameScene(_ size: CGSize) -> GameScene {
@@ -152,6 +170,8 @@ final class GameController: ObservableObject {
     }
 
     func select(_ entity: GameEntity) {
+        cancelAssignActionsMode()
+
         entity.halo?.select()
         playgroundState.setSelectionState(getSelected())
     }
@@ -187,7 +207,33 @@ final class GameController: ObservableObject {
     }
 
     func toggleSelect(_ entity: GameEntity) {
+        cancelAssignActionsMode()
+
         entity.halo?.toggleSelect()
         playgroundState.setSelectionState(getSelected())
     }
+}
+
+extension GameController {
+
+    func cancelAssignActionsMode() {
+        playgroundState.assignSpaceActions = false
+        getSelected().first?.cancelActionsMode()
+    }
+
+    func commitActions(duration: TimeInterval) {
+        playgroundState.assignSpaceActions = false
+
+        let entity = getSelected().first!
+
+        entity.commitActions(duration: duration)
+
+        playgroundState.activeActionTokens = entity.getActionTokens()
+    }
+
+    func startActionsMode() {
+        playgroundState.assignSpaceActions = true
+        getSelected().first!.startActionsMode()
+    }
+
 }

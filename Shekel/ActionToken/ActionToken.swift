@@ -6,6 +6,11 @@ protocol ActionTokenProtocol {
     var duration: TimeInterval { get }
 }
 
+struct ActionTokenContainer: Identifiable {
+    let id = UUID()
+    let token: any ActionTokenProtocol
+}
+
 struct MoveActionToken: ActionTokenProtocol {
     let duration: TimeInterval
     let targetPosition: CGPoint

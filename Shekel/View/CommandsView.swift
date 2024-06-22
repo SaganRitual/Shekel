@@ -12,44 +12,54 @@ struct CommandsView: View {
     let gremlinSpriteNames = ["cyclops"]
 
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Text("Commands")
                 .underline()
+                .padding(.bottom)
 
-            VStack(alignment: .leading) {
-                Picker("Create on click", selection: $clickToCreate) {
+            Text("Create on Click:")
+                .padding(.bottom)
+
+            HStack(alignment: .top) {
+                Picker("", selection: $clickToCreate) {
                     ForEach(ClickToCreate.allCases) { option in
                         Text(option.rawValue).tag(option)
                     }
                 }
                 .pickerStyle(.radioGroup)
-            }
-            .padding()
+                .frame(minWidth: 100)
 
-            switch clickToCreate {
-            case .gremlin:
-                Picker("Sprite", selection: $gremlinSpriteName) {
-                    ForEach(gremlinSpriteNames, id: \.self) { name in
-                        HStack {
-                            Image(name).imageScale(.small)
-                            Text(name)
+                Spacer()
+
+                VStack(alignment: .leading) {
+                    switch clickToCreate {
+                    case .gremlin:
+                        Picker("", selection: $gremlinSpriteName) {
+                            ForEach(gremlinSpriteNames, id: \.self) { name in
+                                HStack {
+                                    Image(name).imageScale(.small)
+                                    Text(name)
+                                }
+                            }
                         }
+                        .pickerStyle(.menu)
+
+                    case .physics:
+                        Picker("", selection: $physicsEntity) {
+                            ForEach(PlaceablePhysics.allCases) { option in
+                                Text(option.rawValue).tag(option)
+                            }
+                        }
+                        .pickerStyle(.menu)
+
+                    case .waypoint:
+                        Text("Click in the scene to place Waypoints")
+                            .frame(maxWidth: .infinity)
                     }
                 }
-                .pickerStyle(.menu)
-
-            case .physics:
-                Picker("Physics", selection: $physicsEntity) {
-                    ForEach(PlaceablePhysics.allCases) { option in
-                        Text(option.rawValue).tag(option)
-                    }
-                }
-                .pickerStyle(.menu)
-
-            case .waypoint:
-                Text("Click in the scene to place Waypoints")
+                .frame(maxWidth: .infinity)
             }
-
+            .frame(minHeight: 100)
         }
     }
 }

@@ -20,6 +20,8 @@ enum SelectionState {
 }
 
 class PlaygroundState: ObservableObject {
+    @Published var activeActionTokens = [ActionTokenContainer]()
+    @Published var assignSpaceActions: Bool = false
     @Published var cameraPosition: CGPoint = .zero
     @Published var cameraScale: CGFloat = 1
     @Published var clickToCreate: ClickToCreate = .gremlin

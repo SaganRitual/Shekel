@@ -9,6 +9,10 @@ class SelectionHalo: GameEntityView {
     var dragAnchor: CGPoint = .zero
     var isSelected: Bool { !sceneNode.isHidden }
 
+    var haloShapeNode: SKShapeNode {
+        sceneNode as! SKShapeNode
+    }
+
     init() {
         let shape = SKShapeNode(circleOfRadius: Self.radius)
 
@@ -31,6 +35,17 @@ class SelectionHalo: GameEntityView {
 
         if let shape = sceneNode as? SKShapeNode {
             shape.lineWidth = 1 / scale
+        }
+    }
+
+    enum SelectionMode { case normal, assignActions }
+
+    func setSelectionMode(_ mode: SelectionMode) {
+        switch mode {
+        case .normal:
+            haloShapeNode.strokeColor = .green
+        case .assignActions:
+            haloShapeNode.strokeColor = .orange
         }
     }
 }
