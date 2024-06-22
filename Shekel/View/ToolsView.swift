@@ -31,6 +31,10 @@ struct ToolsView: View {
                 } else {
                     Text("huh?")
                 }
+
+                ActionsTabView()
+
+                ActionScrollView()
             }
         }
     }

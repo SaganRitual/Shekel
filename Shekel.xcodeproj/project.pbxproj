@@ -34,6 +34,12 @@
 		D4D1F0442C25EB4500003163 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0432C25EB4500003163 /* Utility.swift */; };
 		D4D1F0462C25F5E000003163 /* PhysicsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */; };
 		D4D1F04A2C262C6700003163 /* GameControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0492C262C6700003163 /* GameControllerView.swift */; };
+		D4D1F04C2C26385F00003163 /* ActionsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F04B2C26385F00003163 /* ActionsTabView.swift */; };
+		D4D1F04E2C26393D00003163 /* SpaceActionsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F04D2C26393D00003163 /* SpaceActionsTabView.swift */; };
+		D4D1F0502C26395900003163 /* PhysicsActionsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F04F2C26395900003163 /* PhysicsActionsTabView.swift */; };
+		D4D1F0532C26408500003163 /* ActionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0522C26408500003163 /* ActionToken.swift */; };
+		D4D1F0552C26420F00003163 /* ActionTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0542C26420F00003163 /* ActionTokenView.swift */; };
+		D4D1F0572C26BD5800003163 /* ActionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1F0562C26BD5800003163 /* ActionScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +73,12 @@
 		D4D1F0432C25EB4500003163 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBodyView.swift; sourceTree = "<group>"; };
 		D4D1F0492C262C6700003163 /* GameControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerView.swift; sourceTree = "<group>"; };
+		D4D1F04B2C26385F00003163 /* ActionsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsTabView.swift; sourceTree = "<group>"; };
+		D4D1F04D2C26393D00003163 /* SpaceActionsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceActionsTabView.swift; sourceTree = "<group>"; };
+		D4D1F04F2C26395900003163 /* PhysicsActionsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsActionsTabView.swift; sourceTree = "<group>"; };
+		D4D1F0522C26408500003163 /* ActionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionToken.swift; sourceTree = "<group>"; };
+		D4D1F0542C26420F00003163 /* ActionTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTokenView.swift; sourceTree = "<group>"; };
+		D4D1F0562C26BD5800003163 /* ActionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,7 @@
 		D4D1EFFF2C2461DC00003163 /* Shekel */ = {
 			isa = PBXGroup;
 			children = (
+				D4D1F0512C26406B00003163 /* ActionToken */,
 				D4D1F0202C2471A900003163 /* Extensions */,
 				D4D1F0172C246C5700003163 /* GameComponent */,
 				D4D1F00F2C24624600003163 /* GameEntity */,
@@ -139,13 +152,18 @@
 		D4D1F0122C24646C00003163 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D4D1F04B2C26385F00003163 /* ActionsTabView.swift */,
+				D4D1F0562C26BD5800003163 /* ActionScrollView.swift */,
+				D4D1F0542C26420F00003163 /* ActionTokenView.swift */,
 				D4D1F03F2C25542A00003163 /* CommandsView.swift */,
 				D4D1F0022C2461DC00003163 /* ContentView.swift */,
 				D4D1F03D2C25521E00003163 /* DashboardView.swift */,
 				D4D1F0492C262C6700003163 /* GameControllerView.swift */,
 				D4D1F0132C24648D00003163 /* GameEntityView.swift */,
+				D4D1F04F2C26395900003163 /* PhysicsActionsTabView.swift */,
 				D4D1F0452C25F5E000003163 /* PhysicsBodyView.swift */,
 				D4D1F0382C248A9100003163 /* PlaygroundStateView.swift */,
+				D4D1F04D2C26393D00003163 /* SpaceActionsTabView.swift */,
 				D4D1F0362C248A8B00003163 /* SpriteKitView.swift */,
 				D4D1F0412C25546C00003163 /* ToolsView.swift */,
 			);
@@ -178,6 +196,14 @@
 				D4D1F0302C247C3B00003163 /* MouseDispatch.swift */,
 			);
 			path = MouseInput;
+			sourceTree = "<group>";
+		};
+		D4D1F0512C26406B00003163 /* ActionToken */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1F0522C26408500003163 /* ActionToken.swift */,
+			);
+			path = ActionToken;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,24 +281,30 @@
 				D4D1F0422C25546C00003163 /* ToolsView.swift in Sources */,
 				D4D1F0392C248A9100003163 /* PlaygroundStateView.swift in Sources */,
 				D4D1F0162C246BEA00003163 /* SelectionHalo.swift in Sources */,
+				D4D1F0572C26BD5800003163 /* ActionScrollView.swift in Sources */,
 				D4D1F02A2C24752100003163 /* SelectionMarquee.swift in Sources */,
 				D4D1F0332C247C5300003163 /* DragDispatch.swift in Sources */,
 				D4D1F0312C247C3B00003163 /* MouseDispatch.swift in Sources */,
 				D4D1F0242C2472F600003163 /* GameController.swift in Sources */,
 				D4D1F0222C2471A900003163 /* SKNode+Extensions.swift in Sources */,
+				D4D1F04C2C26385F00003163 /* ActionsTabView.swift in Sources */,
+				D4D1F0532C26408500003163 /* ActionToken.swift in Sources */,
 				D4D1F0352C247C5800003163 /* ClickDispatch.swift in Sources */,
 				D4D1F03B2C24BB0200003163 /* SelectionHaloRS.swift in Sources */,
 				D4D1F0032C2461DC00003163 /* ContentView.swift in Sources */,
 				D4D1F0262C2474E600003163 /* GameScene.swift in Sources */,
 				D4D1F0142C24648D00003163 /* GameEntityView.swift in Sources */,
+				D4D1F0502C26395900003163 /* PhysicsActionsTabView.swift in Sources */,
 				D4D1F0112C24625A00003163 /* GameEntity.swift in Sources */,
 				D4D1F0442C25EB4500003163 /* Utility.swift in Sources */,
 				D4D1F0282C2474F000003163 /* PlaygroundState.swift in Sources */,
 				D4D1F0402C25542A00003163 /* CommandsView.swift in Sources */,
+				D4D1F0552C26420F00003163 /* ActionTokenView.swift in Sources */,
 				D4D1F04A2C262C6700003163 /* GameControllerView.swift in Sources */,
 				D4D1F0212C2471A900003163 /* CoreGraphics+Extensions.swift in Sources */,
 				D4D1F0462C25F5E000003163 /* PhysicsBodyView.swift in Sources */,
 				D4D1F03E2C25521E00003163 /* DashboardView.swift in Sources */,
+				D4D1F04E2C26393D00003163 /* SpaceActionsTabView.swift in Sources */,
 				D4D1F0012C2461DC00003163 /* ShekelApp.swift in Sources */,
 				D4D1F01D2C24700D00003163 /* Gremlin.swift in Sources */,
 			);
